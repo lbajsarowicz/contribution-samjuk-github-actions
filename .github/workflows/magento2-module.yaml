@@ -13,6 +13,11 @@ on:
         required: false
         type: string
         default: ''
+      php:
+        description: 'PHP versions per Magento release in the PHPUnit matrix: highest, lowest, boundaries (lowest and highest), all, or a comma-separated list such as 8.3,8.4'
+        required: false
+        type: string
+        default: 'highest'
       run_unit_tests:
         description: 'Run Test/Unit. Turn off for a module with no unit tests'
         required: false
@@ -53,6 +58,7 @@ jobs:
     uses: samjuk/github-actions/.github/workflows/magento-supported-versions.yaml@master
     with:
       exclude: ${{ inputs.exclude }}
+      php: ${{ inputs.php }}
 
   phpunit:
     name: PHPUnit Tests (GHAS)
@@ -62,6 +68,7 @@ jobs:
       module_path: ./extensions/${{ github.event.repository.name }}/${{ inputs.directory }}
       magento_version: ${{ matrix.version }}
       magento_distribution: ${{ matrix.distribution }}
+      php_version: ${{ matrix.php }}
       run_unit_tests: ${{ inputs.run_unit_tests }}
       run_integration_tests: ${{ inputs.run_integration_tests }}
     strategy:

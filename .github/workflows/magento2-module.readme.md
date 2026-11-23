@@ -21,6 +21,7 @@ jobs:
 | ----- | ------- | ------------ |
 | `directory` | `.` | Module directory, relative to the repository root |
 | `exclude` | | Versions or globs to skip in the PHPUnit matrix, one per line, as in [magento-supported-versions](./magento-supported-versions.readme.md) |
+| `php` | `highest` | PHP versions per Magento release in the PHPUnit matrix: `highest`, `lowest`, `boundaries` (lowest and highest), `all`, or a list such as `8.3,8.4` |
 | `run_unit_tests` | `true` | Set `false` when the module has no `Test/Unit` |
 | `run_integration_tests` | `true` | Set `false` when the module has no `Test/Integration` |
 

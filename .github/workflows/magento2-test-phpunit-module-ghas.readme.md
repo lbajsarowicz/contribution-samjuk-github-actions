@@ -36,6 +36,7 @@ jobs:
     with:
       magento_version: ${{ matrix.version }}
       magento_distribution: ${{ matrix.distribution }}
+      php_version: ${{ matrix.php }}
       run_unit_tests: true
       run_integration_tests: true
     strategy:
